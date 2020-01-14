@@ -4,6 +4,7 @@ build: false
 version: 1.0.{build}
 init:
   - git config --global core.autocrlf true
+  - ps: Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 install:
 - ps: |
     Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.208 -Force
@@ -14,11 +15,13 @@ install:
     "PSVersion:   $($PSVersionTable.PSVersion), build: $($PSVersionTable.BuildVersion), clr version: $($PSVersionTable.ClrVersion)"
     "Host name:   $($Host.Name)"
 build_script:
-- ps: #./build.ps1
+- ps: |
+    Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
+    ./test/appveyor/generate-data.ps1
 test_script:
-- ps: #./test.ps1
+- ps: ./test/appveyor/test.ps1
 on_finish:
-- ps: #$blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+- ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 
 

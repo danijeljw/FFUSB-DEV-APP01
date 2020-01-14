@@ -21,3 +21,5 @@ while ($i -lt 5)
     Start-Process -FilePath 'fsutil' -ArgumentList "file createNew ${path} 10485760" -Wait
     $i++
 }
+
+return 0
