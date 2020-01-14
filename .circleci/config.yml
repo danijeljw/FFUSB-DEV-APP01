@@ -8,7 +8,7 @@ jobs:
       - run:
           name: install required apps
           command: |
-            build apt-get -yqq install wimtools git
+            apt-get -yqq install wimtools git
   test:
     docker:
       - image: debian:stretch-slim
