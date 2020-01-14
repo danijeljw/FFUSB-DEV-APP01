@@ -1,0 +1,6 @@
+whitelist:
+    - merge
+  blacklist:
+    - wip
+    - do-not-merge
+  method: squash
