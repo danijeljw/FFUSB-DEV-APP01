@@ -1,0 +1,4 @@
+requiredChecks:
+  - circleci
+  - travis-ci
+  - appveyor
