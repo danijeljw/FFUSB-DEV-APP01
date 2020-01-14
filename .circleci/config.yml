@@ -5,8 +5,10 @@ jobs:
       - image: debian:stretch-slim
     steps:
       - checkout
-      - run: |
-      apt-get -yqq install wimtools git
+      - run:
+          name: install required apps
+          command: |
+            build apt-get -yqq install wimtools git
   test:
     docker:
       - image: debian:stretch-slim
